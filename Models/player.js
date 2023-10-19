@@ -1,8 +1,16 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const PlayerSchema = new Schema({
   name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  password: {
     type: String,
     required: true,
   },
@@ -19,7 +27,7 @@ const PlayerSchema = new Schema({
     required: true,
   },
   DOB: {
-    type: Date,
+    type: String,
     required: true,
   },
 });
