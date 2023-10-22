@@ -6,14 +6,16 @@ var jwt = require("jsonwebtoken");
 const createplayer = async (req, res) => {
   try {
     const saltRounds = 10;
+    let success = false;
     const { name, email, password, address, Mobile, Role, DOB } = req.body;
     // Checking user is already exists or not
     const isUser = await Player.findOne({ email: req.body.email });
 
     if (isUser) {
-      res.json("user is already found");
-      return;
+      success = false;
+      return res.status(400).json({ err: "user is already found", success });
     }
+    
     //Making salt and hash of the password
     const salt = await bcrypt.genSaltSync(saltRounds);
     const hash = await bcrypt.hashSync(password, salt);
@@ -35,7 +37,10 @@ const createplayer = async (req, res) => {
     };
     // generating token to user
     var token = jwt.sign(data, process.env.JWT_SECRET);
-    res.json({ token });
+    if (token) {
+      success = true;
+    }
+    res.json({ token, success });
   } catch (error) {
     console.log(error);
   }

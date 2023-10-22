@@ -1,10 +1,11 @@
 import React from 'react'
 
-const errorhandle = (err) => {
+const errorhandle = (code, msg) => {
+  
   return (
-    <div>
+    <>
       
-    </div>
+    </>
   )
 }
 
