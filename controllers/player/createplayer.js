@@ -1,3 +1,5 @@
+// -----------------------------  Api function to create a user in database ---------------------------------//
+
 const Player = require("../../Models/player");
 require("dotenv").config();
 const bcrypt = require("bcrypt");
@@ -19,6 +21,7 @@ const createplayer = async (req, res) => {
     //Making salt and hash of the password
     const salt = await bcrypt.genSaltSync(saltRounds);
     const hash = await bcrypt.hashSync(password, salt);
+
     // Saving data to the database
     const user = await Player.create({
       name: name,
