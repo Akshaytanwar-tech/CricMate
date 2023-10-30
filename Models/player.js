@@ -9,6 +9,7 @@ const PlayerSchema = new Schema({
   email: {
     type: String,
     required: true,
+    unique: true,
   },
   password: {
     type: String,
@@ -21,6 +22,7 @@ const PlayerSchema = new Schema({
   Mobile: {
     type: Number,
     required: true,
+    unique: true,
   },
   Role: {
     type: String,

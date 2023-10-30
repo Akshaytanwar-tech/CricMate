@@ -15,7 +15,7 @@ const addPlayer = async (req, res) => {
       .json({ err: "Player is not exists Sign up first", success });
   }
 
-  const updatePlayer = await Team.findByIdAndUpdate(player._id, {
+  const updatePlayer = await Team.findByIdAndUpdate(req.params.id, {
     $push: {
       players: [
         {
@@ -24,9 +24,10 @@ const addPlayer = async (req, res) => {
         },
       ],
     },
+    new: true
   });
 
-  res.json({ updatePlayer });
+  return await res.json({ updatePlayer });
 };
 
 module.exports = { addPlayer };

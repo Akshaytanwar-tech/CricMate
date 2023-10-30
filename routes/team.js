@@ -7,5 +7,7 @@ const { addPlayer } = require("../controllers/team/addPlayer");
 router.post("/createTeam", createTeam);
 
 // Api - 2:- To add the player to the team.
-router.post("/addPlayer", addPlayer);
+router.put("/addPlayer/:id", addPlayer);
+
+
 module.exports = router;
